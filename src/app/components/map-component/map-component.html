@@ -1,18 +1,20 @@
 
-<div class="map-container">
+<div class="map-toolbar">
+  <button
+    type="button"
+    class="toll-toggle-btn"
+    [class.active]="tollPlazaEnabled"
+    [disabled]="loadingTollPlazas"
+    (click)="toggleTollPlazas()">
 
-  <div class="map-toolbar">
-    <button
-      type="button"
-      class="toll-plaza-btn"
-      [class.active]="tollPlazaEnabled"
-      (click)="toggleTollPlaza()">
+    <span class="status-dot"></span>
 
-      {{ tollPlazaEnabled ? 'Hide Toll Plazas' : 'Show Toll Plazas' }}
-
-    </button>
-  </div>
-
-  <div id="map"></div>
-
+    {{ loadingTollPlazas
+      ? 'Loading toll plazas...'
+      : tollPlazaEnabled
+        ? 'Hide Toll Plazas'
+        : 'Show Toll Plazas' }}
+  </button>
 </div>
+
+<div id="map"></div>
